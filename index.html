@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IoT RGB Controller</title>
+
+  <!-- Link our own CSS file (no CSS is written inside this HTML file) -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Main dashboard card (glassmorphism panel) -->
+  <main class="panel">
+
+    <!-- Title section -->
+    <header class="header">
+      <h1>IoT RGB Controller</h1>
+      <p class="subtitle">ESP8266 • Firebase Realtime Database</p>
+
+      <!-- Small dot + text showing if Firebase is connected -->
+      <div class="connection-status">
+        <span id="connectionDot" class="dot offline"></span>
+        <span id="connectionText">Firebase Offline</span>
+      </div>
+    </header>
+
+    <!-- Device status info: Device name, Connection, Current color -->
+    <section class="status-grid">
+      <div class="status-box">
+        <span class="status-label">DEVICE</span>
+        <span class="status-value">ESP8266</span>
+      </div>
+      <div class="status-box">
+        <span class="status-label">CONNECTION</span>
+        <span id="connectionState" class="status-value">OFFLINE</span>
+      </div>
+      <div class="status-box">
+        <span class="status-label">ACTIVE LEDS</span>
+        <span id="currentColorText" class="status-value">NONE</span>
+      </div>
+    </section>
+
+    <!-- Each LED is now independent, so we show one dot per color -->
+    <div class="led-wrapper">
+      <div id="ledRed" class="led"></div>
+      <div id="ledGreen" class="led"></div>
+      <div id="ledBlue" class="led"></div>
+    </div>
+
+    <!-- The 3 control buttons: RED, GREEN, BLUE (each toggles ON/OFF) -->
+    <section class="button-grid">
+      <button id="btnRed" class="color-btn btn-red">
+        RED
+        <span id="redState" class="btn-state">OFF</span>
+      </button>
+      <button id="btnGreen" class="color-btn btn-green">
+        GREEN
+        <span id="greenState" class="btn-state">OFF</span>
+      </button>
+      <button id="btnBlue" class="color-btn btn-blue">
+        BLUE
+        <span id="blueState" class="btn-state">OFF</span>
+      </button>
+    </section>
+
+  </main>
+
+  <!--
+    Our JavaScript file is loaded as an ES module (type="module")
+    because the modern Firebase SDK uses "import" statements.
+  -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
